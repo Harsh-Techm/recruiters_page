@@ -15,7 +15,7 @@ $sql = "SELECT u.UserName, u.Email, u.Phone, d.FirstName, d.LastName, d.Age, lm.
 FROM users u
 JOIN userdetails d ON u.UserId = d.UserId
 JOIN locationmaster lm ON d.Location = lm.LocationId
-WHERE u.UserId = $userId";
+WHERE u.UserId = '$userId'";
 
 $result = $conn->query($sql);
 $userData = $result->fetch_assoc();
@@ -285,7 +285,7 @@ $conn->close();
                       <h6 class="mb-0">Experience</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                    <?php echo $userData['Experience'];?>
+                    <?php echo $userData['Experience']. " Years";?>
                     </div>
                   </div>
                   <!-- <hr> -->
@@ -350,10 +350,26 @@ $conn->close();
                 $('.notification .remove').click(function(){
                   $(this).parent().remove();
                   updateNotificationCount();
+                  let notificationId = $(this).data('id');
+                  removeNotification(notificationId);
                 });
               }else{
                 $('#notification-count').text('0');
-                notificationsDropdown.html('<a>No notifications</a>');
+                notificationsDropdown.html('<a>No new notifications</a>');
+              }
+            }
+          });
+        }
+
+        function removeNotification(notificationId){
+          $.ajax({
+            url: 'remove_notification.php',
+            method: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({ id: notificationId}),
+            success: function(data){
+              if(data.success){
+                fetchNotifications();
               }
             }
           });

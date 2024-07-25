@@ -1,29 +1,24 @@
 <?php
-session_start();
-if(!isset($_SESSION['login']))
-{
-    header('location:../login.php');
+if(!isset($_SESSION)){
+    // Start Session it is not started yet
+    session_start();
+  }
+  if(!isset($_SESSION['login']) || $_SESSION['login']!=true)
+  {
+    header('location:../index.php');
     exit;
-}
-$conn = mysqli_connect("localhost","root","","recruitment_portal");
-if($conn->connect_error){
-    die ("connection failed" . $conn->connect_error);
-}
+  }
+  include 'fetch_data.php';
+  $userId=$_SESSION['UserId'];
 
-$type = $_POST['type'];
-$sno = $_POST['sno'];
+$data = json_decode(file_get_contents('php://input'),true);
+$notificationId = $data['id'];
 
-//updated notification_send to zero
-if($type === 'softlock'){
-    $sql = "UPDATE softlock_data SET notification_send = 0 WHERE sno='$sno'";
-}elseif($type === 'confirm'){
-    $sql = "UPDATE confirm_data SET notification_send = 0 WHERE sno='$sno'";
-}
+$sql = "UPDATE `userprojectdetails` SET `Send_Notification` = '0' WHERE `userprojectdetails`.`SlNo` = $notificationId";
 
 if($conn->query($sql)===TRUE){
-    echo "notification removed successfully";
+    echo json_encode(['success'=>true]);
 }else{
-    echo "Error updating record: ". $conn->error;
+    echo json_encode(['success'=>false]);
 }
-$conn->close();
 ?>
