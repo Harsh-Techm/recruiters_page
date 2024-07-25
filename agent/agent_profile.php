@@ -1,20 +1,19 @@
 <?php
  
- 
+session_start();
+if(!isset($_SESSION['agentLogin']) || $_SESSION['agentLogin']!=true)
+{
+    header('location:../index.php');
+    exit;
+}
 include "../database/dbconnect.php";
-// include "../database/config.php";
  
-// session_start();
-// if(!isset($_SESSION['agentLogin']) || $_SESSION['agentLogin']!=true)
-// {
-//     header('location:../index.php');
-//     exit;
-// }
+
 
 // $user_name =  $_SESSION["UserName"];
  
-$user_email = "agentsushanta@gmail.com";
-$search_query = "SELECT * FROM `users` WHERE `Email` LIKE '$user_email';";
+$UserId = $_COOKIE['AgentId'];
+$search_query = "SELECT * FROM `users` WHERE `UserId` LIKE '$UserId';";
 $result = mysqli_query($conn, $search_query);
 $row = $result->fetch_assoc();
 // print_r($row);
