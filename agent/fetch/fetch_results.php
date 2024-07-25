@@ -8,7 +8,7 @@ $location = $data['location'];
 $skill = $data['skill'];
 $experience = $data['experience'];
 
-$query = "SELECT ud.UserId,ud.FirstName, ud.LastName, ud.Experience, upd.Status,lm.LocationName,sm.SkillName,u.UserName, p.ProjectName
+$query = "SELECT ud.UserId,ud.FirstName, ud.LastName, ud.Experience, upd.Status,lm.LocationName,sm.SkillName,u.UserName, p.ProjectName,upd.AgentId
 from userdetails ud 
 left join userprojectdetails upd on upd.UserId=ud.UserId
 left join users u on upd.AgentId=u.UserId

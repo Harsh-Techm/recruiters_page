@@ -71,8 +71,7 @@ if(isset($_POST['update'])){
             <img src="../images/hamburger_icon.png" alt="Menu">
         </button>
             <div class="dropdown-content" style="right:0px;">
-                <a href="index.php">Agent Dashboard</a>
-                <a href="agent_profile.php">Agent Profile</a>
+                <a href="index.php">Dashboard</a>
                 <a href="agent_logout.php">Logout</a>
             </div>
         </div>
