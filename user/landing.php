@@ -285,7 +285,7 @@ $conn->close();
                       <h6 class="mb-0">Experience</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                    <?php echo $userData['Experience']. " Years";?>
+                    <?php echo $userData['Experience'];?>
                     </div>
                   </div>
                   <!-- <hr> -->
