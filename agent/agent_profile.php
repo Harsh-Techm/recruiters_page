@@ -1,20 +1,19 @@
 <?php
  
- 
+session_start();
+if(!isset($_SESSION['agentLogin']) || $_SESSION['agentLogin']!=true)
+{
+    header('location:../index.php');
+    exit;
+}
 include "../database/dbconnect.php";
-// include "../database/config.php";
  
-// session_start();
-// if(!isset($_SESSION['agentLogin']) || $_SESSION['agentLogin']!=true)
-// {
-//     header('location:../index.php');
-//     exit;
-// }
+
 
 // $user_name =  $_SESSION["UserName"];
  
-$user_email = "agentsushanta@gmail.com";
-$search_query = "SELECT * FROM `users` WHERE `Email` LIKE '$user_email';";
+$UserId = $_COOKIE['AgentId'];
+$search_query = "SELECT * FROM `users` WHERE `UserId` LIKE '$UserId';";
 $result = mysqli_query($conn, $search_query);
 $row = $result->fetch_assoc();
 // print_r($row);
@@ -72,8 +71,7 @@ if(isset($_POST['update'])){
             <img src="../images/hamburger_icon.png" alt="Menu">
         </button>
             <div class="dropdown-content" style="right:0px;">
-                <a href="index.php">Agent Dashboard</a>
-                <a href="agent_profile.php">Agent Profile</a>
+                <a href="index.php">Dashboard</a>
                 <a href="agent_logout.php">Logout</a>
             </div>
         </div>

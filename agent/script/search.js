@@ -110,7 +110,7 @@ function filterResults() {
                 </td>
                 <td>
                     <button id='search-softlock-btn' class='search-softlock-btn' ${user.Status=='confirm'?'Disabled' :user.Status=='softlock'? 'Disabled':''}  data-user-email='${user.UserId}'>Softlock</button>
-                    <button class='search-confirm-btn'  ${user.Status=='confirm'?'Disabled':''} data-user-email='${user.UserId}'>Confirm</button>
+                    <button class='search-confirm-btn'  ${user.Status=='confirm'?'Disabled':getcookie("AgentId")!=user.AgentId?'Disabled':''} data-user-email='${user.UserId}'>Confirm</button>
                 </td>
                 
             </tr>`;

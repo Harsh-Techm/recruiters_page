@@ -385,7 +385,7 @@ $outcome2 = mysqli_query($conn, $sql2);
     })
   </script>
   <script src="script/script.js"></script>
-
+  <!-- sushanta -->
 </body>
 
 </html>

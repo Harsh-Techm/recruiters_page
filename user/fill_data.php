@@ -288,8 +288,8 @@ $conn->close();
                             <label for="gender" class="form-label">Gender</label>
                             <select name="gender" class="form-control" id="gender" required>
                                 <option value="">Select your gender</option>
-                                <option value="male">M</option>
-                                <option value="female">F</option>
+                                <option value="M">M</option>
+                                <option value="F">F</option>
                                 <!-- <option value="other">Other</option> -->
                             </select>
                         </div>

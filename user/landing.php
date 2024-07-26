@@ -9,16 +9,13 @@ if(!isset($_SESSION['login']) || $_SESSION['login']!=true)
   exit;
 }
 include 'fetch_data.php';
-// $userId = 1; // Assuming user ID 1 for this example.
-
 $userId=$_SESSION['UserId'];
-//fetch user details
+
 $sql = "SELECT u.UserName, u.Email, u.Phone, d.FirstName, d.LastName, d.Age, lm.LocationName, d.HighestQualification,d.Experience, d.About, d.Image, d.Resume, d.Gender
 FROM users u
 JOIN userdetails d ON u.UserId = d.UserId
 JOIN locationmaster lm ON d.Location = lm.LocationId
 WHERE u.UserId = '$userId'";
-// var_dump($sql);
 
 $result = $conn->query($sql);
 $userData = $result->fetch_assoc();
@@ -52,7 +49,10 @@ $conn->close();
         <meta charset="UTF-8" />
         <title>User Profile</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    
         <link rel="stylesheet" href="style.css">
         <style>
           .navbar {
@@ -60,22 +60,73 @@ $conn->close();
               color: white;
               display: flex;
               justify-content: space-between;
+              align-items: center;
               padding: 1em;
               margin-bottom: 5px;
           }
           .navbar-brand {
               font-weight: bold;
               font-size: 18px;
-              padding-left: 30px;
+              padding-left: 20px;
+          }
+          .navbar-right{
+            display: flex;
+            align-items: center;
           }
           .dropdown {
               position: relative;
               display: inline-block;
+              margin-right: 20px;
           }
+          .dropdown-content{
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: lightgray;
+            color: black;
+            min-width: 500px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
+            z-index: 1;
+          }
+          .dropdown-content a{
+            color: black;
+            padding-left: 5px;
+            text-decoration: none;
+            display: block;
+          }
+          /* .dropdown-content a:hover{
+            background-color: #f1f1f1;
+          } */
+          /* .dropdown:hover .dropdown-content{
+            display: block;
+          } */
           #logout{
-            padding-right: 50px;
+            padding-right: 20px;
             color: red;
             font-size: 18px;
+          }
+          #bell-icon{
+            font-size: 24px;
+            cursor: pointer;
+            position: relative;
+          }
+          #bell-icon .badge{
+            position: absolute;
+            cursor: pointer;
+            top: -10px;
+            right: -5px;
+            background: red;
+            color: white;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 12px;
+          }
+          .message{
+            padding-left: 20px;
+          }
+          .remove{
+            padding-left: 20px;
+            cursor: pointer;
           }
         </style>
         
@@ -84,16 +135,16 @@ $conn->close();
     <body>
      <div class="navbar">
         <div class="navbar-brand">Tech <br> <span style="color: red;">HireHub</span></div>
-        <div class="dropdown">
-            <!-- <button class="dropbtn" >
-            <img src="hamburger_icon 1.png" alt="Menu"> 
-            <img src="../image/hamburger_icon.png" alt="Menu">
-             </button> -->
-            <div class="dropdown-content" style="right:0px;">
-                <!-- <a href="#">User Dashboard</a> -->
-                <a id="logout" href="user_logout.php">Logout</a>
-                 
+        <div class="navbar-right">
+          <div class="dropdown">
+            <div id="bell-icon" class="dropbtn">
+              &#128276; <span class="badge" id="notification-count">0</span>
             </div>
+            <div class="dropdown-content" id="notifications-dropdown">
+              <!-- notification will be loaded here -->
+            </div>
+          </div>
+          <a id="logout" href="user_logout.php">Logout</a>
         </div>
     </div> 
 
@@ -265,6 +316,71 @@ $conn->close();
 
         </div>
     </div>
+    <script>
+      $(document).ready(function(){
+        $('#bell-icon').click(function(){
+          $('#notifications-dropdown').toggle();
+        });
+
+        fetchNotifications();
+
+        function fetchNotifications(){
+          $.ajax({
+            url: 'fetch_notifications.php',
+            method: 'GET',
+            dataType: 'json',
+            success: function(data){
+              let notificationsDropdown = $('#notifications-dropdown');
+              notificationsDropdown.empty();
+
+              if(data.notifications.length > 0){
+                $('#notification-count').text(data.notifications.length);
+
+                data.notifications.forEach(notification => {
+                  let notificationDiv = $('<div>').addClass('notification');
+                  notificationDiv.html(`
+                      
+                      <span class="message">${notification.message}</span>
+                      <span class="remove" data-id = "${notification.id}">&times;</span>
+                      <hr>
+                  `);
+                  notificationsDropdown.append(notificationDiv);
+                });
+
+                $('.notification .remove').click(function(){
+                  $(this).parent().remove();
+                  updateNotificationCount();
+                  let notificationId = $(this).data('id');
+                  removeNotification(notificationId);
+                });
+              }else{
+                $('#notification-count').text('0');
+                notificationsDropdown.html('<a>No new notifications</a>');
+              }
+            }
+          });
+        }
+
+        function removeNotification(notificationId){
+          $.ajax({
+            url: 'remove_notification.php',
+            method: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({ id: notificationId}),
+            success: function(data){
+              if(data.success){
+                fetchNotifications();
+              }
+            }
+          });
+        }
+
+        function updateNotificationCount(){
+          let count = $('#notifications-dropdown .notification').length;
+          $('#notification-count').text(count);
+        }
+      });
+    </script>
     
     </body>
 </html>
