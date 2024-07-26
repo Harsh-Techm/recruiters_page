@@ -26,7 +26,7 @@ $phone = $userData['Phone'];
 $sqlSkills = "SELECT s.SkillId, s.SkillName, us.SkillType
 FROM userskilldetails us
 JOIN skillmaster s ON us.SkillId = s.SkillId
-WHERE us.UserId = $userId";
+WHERE us.UserId = '$userId'";
  
 $resultSkills = $conn->query($sqlSkills);
 $primarySkillId = null;

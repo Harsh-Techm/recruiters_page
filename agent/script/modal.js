@@ -24,10 +24,10 @@ function openModal(userId){
         document.getElementById("modal-about").textContent= `About: ${user["About"]}`;
         document.getElementById("modal-email").textContent= `Email: ${user["Email"]}`;
         document.getElementById("modal-qualification").textContent= `Qualification: ${user["HighestQualification"]}`;
-        // document.getElementById("modal-skill").textContent= `Skill: ${user["Skill"]}`;
-        // document.getElementById("modal-gender").textContent= `Gender: ${user["Gender"]}`;
+        document.getElementById("modal-skill").textContent= `Skill: ${user["SkillName"]}`;
+        document.getElementById("modal-gender").textContent= `Gender: ${user["Gender"]}`;
         document.getElementById("modal-age").textContent= `Age: ${user["Age"]}`;
-        document.getElementById("modal-location").textContent= `Location: ${user["Location"]}`;
+        document.getElementById("modal-location").textContent= `Location: ${user["LocationName"]}`;
         document.getElementById("modal-image").src= `data:image/png;base64,${user.image}`;
         document.getElementById("modal-resume").href= `data:application/pdf;base64,${user.resume}`;
         document.getElementById("modal-resume").download= `${user['First name']}_${user['Last name']}_Resume.pdf`;
