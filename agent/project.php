@@ -35,8 +35,8 @@ $outcome2 = mysqli_query($conn, $sql2);
   <title>Project</title>
 </head>
 
-<body>
-  <div class="navbar">
+<body style="background-image: url('../images/p (1).jpg'); background-size: cover; color: white; font-size : 20px;">
+  <!-- <div class="navbar">
     <div class="logo"><span style="color: white;">Tech</span> <br><span style="color: red;">HireHub</span></div>
     <div class="nav-links">
       <a href="index.php"><button class="tab ">Dashboard</button></a>
@@ -50,6 +50,21 @@ $outcome2 = mysqli_query($conn, $sql2);
         <a href="agent_logout.php" id="log-out">Log Out</a>
       </div>
     </div>
+  </div> -->
+  <div class="navbar">
+        <div class="logo"><span style="color: white;">Tech</span> <br><span style="color: red;">HireHub</span></div>
+        <div class="nav-links">
+            <a href="dashboard.php"><button  style="color: white;"  class="tab ">Dashboard</button></a>
+            <a href="project.php"><button style="color: white;" class="tab active">Project</button></a>
+            <a href="search.php"><button style="color: white;" class="tab">Search</button></a>
+        </div>
+        <div class="user-menu" onclick="toggleDropdown()">
+            <img src="../images/hamburger_icon.png" alt="Icon" class="user-icon">
+            <div class="dropdown-menu" id="userDropdown">
+                <a href="agent_profile.php" id="edit-profile">Edit Profile</a>
+                <a href="#" id="log-out">Log Out</a>
+            </div>
+        </div>
   </div>
 
   <!-- Modal -->
@@ -320,9 +335,7 @@ $outcome2 = mysqli_query($conn, $sql2);
     </div>
   </div>
 
-  <?php
-  include ("../partials/_footer.php");
-  ?>
+ 
 
 
   <!-- Optional JavaScript -->

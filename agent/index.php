@@ -26,7 +26,7 @@ if(!isset($_SESSION['agentLogin']) || $_SESSION['agentLogin']!=true)
 
 <body>
    
-    <div class="navbar">
+    <!-- <div class="navbar">
         <div class="logo"><span style="color: white;">Tech</span> <br><span style="color: red;">HireHub</span></div>
         <div class="nav-links">
             <button id="dashboard-tab" class="tab active">Dashboard</button>
@@ -40,10 +40,10 @@ if(!isset($_SESSION['agentLogin']) || $_SESSION['agentLogin']!=true)
                 <a href="agent_logout.php" id="log-out">Log Out</a>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <div class="tab-content active" id="dashboard-content">
-    <h1>Dashboard</h1>
+    <!-- <h1>Dashboard</h1> -->
         <?php
             include('dashboard.php');            
         ?>

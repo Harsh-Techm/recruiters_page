@@ -10,10 +10,9 @@
             justify-content: center;
             text-align: center;
             padding: 3px;
-            background-color: rgb(49, 47, 47);;
+            background-color: rgb(49, 47, 47);
             margin-top: 3rem;
-            color: white;
-            padding: 25px;
+            color: #d1c8c8;
         }
         footer a{
             text-decoration : none;
@@ -27,7 +26,7 @@
 </head>
 <body>
     <footer>
-    <h5>TECH HIREHUB&#8482; |<a href="https://www.techhirehub.com" target="_blank">  WWW.TECHHIREHUB.COM  </a>| &#169; ALL RIGHTS RESERVED</h5> 
+    <pre>TECH HIREHUB&#8482; |<a href="https://www.techhirehub.com" target="_blank">  WWW.TECHHIREHUB.COM  </a>| &#169; ALL RIGHTS RESERVED </pre>
     </footer>
    
 </body>

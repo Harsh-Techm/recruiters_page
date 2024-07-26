@@ -33,8 +33,8 @@ if (isset($_POST["user_login"])) {
             }
             
         } else {
-            echo"<link rel='stylesheet' href='styles\style.css'>
-            <h6 class='popup1'>Your Email Id or Password do not match</h6>";
+            echo"<link rel='stylesheet' href='login_index.css'>
+            <h1 class='popup1'>Email/Password not matched !</h1>";
 
         }
     } else {
@@ -73,8 +73,8 @@ if (isset($_POST["user_login"])) {
             header("location:agent/index.php");
         } else {
             // echo "<h1>Password do not match</h1>";
-            echo"<link rel='stylesheet' href='styles\style.css'>
-            <h6 class='popup1'>Your Email Id or Password do not match</h6>";
+            echo"<link rel='stylesheet' href='login_index.css'>
+            <h1 class='popup1'>Email/Password not matched !</h1>";
 
         }
     } else {
@@ -88,17 +88,24 @@ if (isset($_POST["user_login"])) {
 
 
 ?>
-<style>
-    .body{
-        height: 100vh;
-    }
-</style>
-    <div class="container">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login form</title>
+    <link rel="stylesheet" href="login_index.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+<body>
+    <!-- <div class="container">
         <div id="user-login-box" class="login-box">
-            <!-- <div class="login-icon"></div> -->
-            <img src="images\computer-1331579_640.webp" width="100" height="100">
-            <h2>USER LOGIN</h2>
+            
+            
+            <h1>User Login</h1>
             <form action="index.php" method="post">
+                <div></div>
                 <input type="text" name="email" placeholder="Email Id" required>
                 <input type="password" name="password" placeholder="Password" required>
                 <input type="hidden" id="Type" name="Type" value="User">
@@ -108,7 +115,7 @@ if (isset($_POST["user_login"])) {
             </form>
         </div>
         <div id="agent-login-box" class="login-box" style="display: none;">
-            <!-- <div class="login-icon"></div> -->
+            
             <img src="images\agent-logo.png" width="100" height="100">
             <h2>AGENT LOGIN</h2>
             <form action="index.php" method="post">
@@ -120,6 +127,63 @@ if (isset($_POST["user_login"])) {
                 <a href="agent_registration.php"><button type="button" class="register-btn">REGISTER</button></a>
             </form>
         </div>
+    </div> -->
+
+    <div class="wrapper">
+        <div id="user-login-box" class="login-box">
+            <form action="index.php" method="post">
+                <h1> User login</h1>
+                <div class="input-box">
+                    <input type="text"  name="email" placeholder="Email Id" required>
+                    <i class='bx bxs-user'></i>
+                </div>
+                <div class="input-box">
+                    <input type="password" name="password"  placeholder="Password" required>
+                    <i class='bx bxs-lock'></i>
+                </div>
+                <input type="hidden" id="Type" name="Type" value="User">
+                <div class="remeber-forgot">
+                    <!-- <label><input type="checkbox">Remember me</label> -->
+                    <a href="reset_password_user.php" class="forgot-password"> Forgot password ?</a>
+                </div>
+                <button type="submit" class="btn" name="user_login" >Login</button>
+                <div class="register-link">
+                    <p>Don't have an account ? 
+                    <a href="user_registration.php">Signup</a></p>
+                </div>
+            </form>
+        </div>
+
+        <div id="agent-login-box" class="login-box" style="display: none;">
+            <form action="index.php" method="post">
+                <h1> Agent login</h1>
+                <div class="input-box">
+                    <input type="text"  name="email" placeholder="Email Id" required>
+                    <i class='bx bxs-user'></i>
+                </div>
+                <div class="input-box">
+                    <input type="password" name="password"  placeholder="Password" required>
+                    <i class='bx bxs-lock'></i>
+                </div>
+                <input type="hidden" id="Type" name="Type" value="Agent">
+                <div class="remeber-forgot">
+                    <!-- <label><input type="checkbox">Remember me</label> -->
+                    <a href="reset_password_agent.php" class="forgot-password"> Forgot password ?</a>
+                </div>
+                <button   type="submit" class="btn" name="agent_login" >Login</button>
+                <div class="register-link">
+                    <p>Don't have an account ? 
+                    <a href="agent_registration.php">Signup</a></p>
+                </div>
+            </form>
+        </div>
+
+
+
+
+
+        
+
     </div>
 
 <script src="scripts/script.js"></script>
@@ -127,6 +191,3 @@ if (isset($_POST["user_login"])) {
 
 </html>
 
-<?php
-include "partials/_footer.php"
-?>

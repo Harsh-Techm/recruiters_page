@@ -4,7 +4,6 @@
 }
 body {
     font-family: Arial, sans-serif;
-       
 }
 
 .navbar{
@@ -13,8 +12,7 @@ body {
     align-items: centre;
     padding: 10px 20px;
     background-color: rgb(49, 47, 47);
-    background: transparent;
-    /* border-bottom: 1px solid #ddd; */
+    border-bottom: 1px solid #ddd;
     /* color: #ddd; */
 }
 .logo {
@@ -29,16 +27,18 @@ body {
 .nav-links>button{
     color: white;
 }
+.nav-links>a>button{
+    color: white;
+}
 .tab{
     padding: 10px 20px;
     cursor: pointer;
     border: none;
     background: none;
     font-size: 16px;
-    font-weight: bold;
 }
 .tab.active{
-    border-bottom: 3px solid skyblue;
+    border-bottom: 2px solid #ce1a29;
 }
 .tab-content{
     display: none;
@@ -52,9 +52,7 @@ body {
     align-items: center;
     cursor: pointer;
 }
-/* .user-icon{
 
-} */
  .dropdown-menu{
     display: none;
     position: absolute;
@@ -83,63 +81,12 @@ body {
 .show{
     display: block;
 }
-#results{
-    margin:  0rem 5rem;
-    padding: 1rem;
-    background: transparent;
-    border: 3px solid skyblue;
-    backdrop-filter: blur(20px);
-    box-shadow: 0 0 10px rgba(0,0,0, .2);
-    border-radius: 1rem;
-}
-/* .form-group input{
-        border: 3px solid skyblue;
-        color: white;
-        background: rgb(2, 34, 46); 
-} */
-.form-control{
-    border: 3px solid skyblue;
-    color: white;
-    background: transparent; 
-}
-form{
-    background: transparent;
-    color: white;
-    border: 3px solid skyblue;
-    border-radius: 10px;
-    font-weight: 600;
-    padding: 2rem;
-    backdrop-filter: blur(20px);
-}
-.table{
-    background: transparent;
-    color: white;
-    border: 3px solid skyblue;
-    border-radius: 110px;
-    font-weight: 600;
-    padding: 2rem;
-    backdrop-filter: blur(120px);
 
-}
-#customerid{
-    background: transparent;
-    color: white;
-    padding: 0.2rem 0.3rem;
-    border: 2px solid skyblue;
-}
-#title2{
-    background: transparent;
-    color: white;
-    padding: 0.2rem 0.3rem;
-    border: 2px solid skyblue;
-}
-#combo{
-    background: purple;
-
-
-}
-#combo2{
-    background: purple;
+/* project */
+.projectContainer{
+    border: 1px solid #ddd;
+    /* border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
 }
 
 /* notification styles */
@@ -164,3 +111,4 @@ form{
 .dt-search{
     display: none;
 }
+

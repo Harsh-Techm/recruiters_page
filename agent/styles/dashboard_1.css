@@ -1,0 +1,59 @@
+.dashboard-tabs {
+  display: flex;
+  margin: 20px;
+  justify-content: center;
+}
+
+.dashboard-tab-content {
+  margin: 10px;
+  border-radius: 30px;
+  padding: 20px;
+  /* border: 2px solid #c53030; */
+  background-color: #fff;
+}
+
+.dashboard-tab-content table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.dashboard-tab-content table,
+.dashboard-tab-content th,
+.dashboard-tab-content td {
+  border: 1px solid #ccc;
+}
+
+.dashboard-tab-content th,
+.tab-content td {
+  padding: 10px;
+  text-align: left;
+}
+
+.btn {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 550;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: red;
+  color: white;
+}
+
+.currently_set{
+  /* border-bottom:none; */
+  border: 2px solid blue;
+}
+
+.dashboard-tabs >button{
+  border-radius:50px;
+  margin: 0px 10px;
+  color:white;
+  font-weight:bold;
+  background-color:#c53030;
+  width: 180px;
+  height: 40px;
+}
+

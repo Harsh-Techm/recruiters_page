@@ -1,29 +1,24 @@
 body {
     font-family: Arial, sans-serif;
-    
-    
+    /* background-repeat: no-repeat; 
+    background-attachment: fixed; */
 }
 
 .search-container {
     max-width: 600px;
     margin: 50px auto;
-    padding: 30px 20px;
-    border: 3px solid skyblue;
-    border-radius: 15px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(20px);
 }
 
 #search-bar {
     width: 96%;
     padding: 10px;
     margin-bottom: 10px;
-    border: 3px solid skyblue;
-    border-radius: 10px;
-    background: transparent;
-    color: white;
-    font-weight: 600;
-    
+    border: 1px solid #ddd;
+    border-radius: 5px;
 }
 
 .filters {
@@ -34,36 +29,27 @@ body {
 .filters select {
     width: 32%;
     padding: 10px;
-    border: 3px solid skyblue;
-    border-radius: 10px;
-    background: transparent;
-    color: white;
-    font-weight: 600;
-}
-
-.filters select option {
-    border: 3px solid skyblue;
-    color: white;
-    background: rgb(2, 34, 46); 
+    border: 1px solid #ddd;
+    border-radius: 5px;
 }
 
 #results {
     margin-top: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.user-result{
+/* .user-result{
     padding: 10px;
     display: flex;
     border-radius: 5px;
     margin-bottom: 10px;
     justify-content: space-between;
     align-items:center ;
-    border: 3px solid skyblue;
-    color: white;
-    background: transparent;
-    
-}
-.result-buttons{
+    border: 1px solid white;
+} */
+/* .result-buttons{
     display: flex;
     gap: 5px;
     
@@ -74,13 +60,8 @@ body {
     border-radius: 3px;
     color: white;
     cursor: pointer;
-}
-/* #location-filter .filter1{
-    border: 3px solid skyblue;
-    color: white;
-    background: transparent;
 } */
-.open-btn{
+/* .open-btn{
     background-color: green;
 }
 .soft-lock-btn{
@@ -94,68 +75,49 @@ body {
 }
 .soft-locked-btn{
     background-color:#ffa500;
-}
-
-
-/* notification styles */
-.notification{
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background-color: #4caf50;
-    color: white;
-    padding: 16px;
-    z-index: 1000;
-    border-radius: 5px;
-    opacity: 1;
-    transition: opacity 0.5s;
-}
-.notification.error{
-    background-color: red;
-}
-.notification.fade-out{
-    opacity: 0;
-}
-.dt-search{
-    display: none;
-}
+} */
 .search_user_status{
     height: 30px;
 }
-.lock{
+.search-softlock-btn{
+    background-color: orange;
+    color: white;
+    border: none;
+    padding: 5px;
+    border-radius: 4px;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2), 0 6px 22px 0 rgba(0, 0, 0, 0.19);
+}
+.search-confirm-btn{ 
+    background-color: #5d4bef;
+    color: white;
+    border: none;
+    padding: 5px;
+    border-radius: 4px;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2), 0 6px 22px 0 rgba(0, 0, 0, 0.19);
+}
+.search-softlock-btn:hover{
+    background-color: #ff800086;
+    cursor: pointer;
+}
+.search-confirm-btn:hover{
+    background-color: #78a8e6;
+    cursor: pointer;
+}
+.search-softlock-btn:disabled{
+    background-color: #ff800086;
+}
+.search-confirm-btn:disabled{
+    background-color: #78a8e6;
+}
+/* .lock{
     background-color: yellow;
 }
 .unlock{
     background-color: lightblue;
-}
-.search-softlock-btn{
-    padding: 0.5rem 0.5rem;
-    border-radius: 0.5rem;
-    color: white;
-    background: transparent;
-    border: 3px solid skyblue;
-    cursor: pointer;
-}
-
-.search-confirm-btn{
-    padding: 0.5rem 0.5rem;
-    border-radius: 0.5rem;
-    color: white;
-    background: transparent;
-    border: 3px solid skyblue;
-    cursor: pointer;
-}
-
-/* #confirm-project-button{
-    padding: 0.5rem 0.5rem;
-    border-radius: 0.5rem;
-    color: white;
-    background: transparent;
-    border: 2px solid green;
-    cursor: pointer;
 } */
 
 
+/* modal css */
 .smallModal{
     display: none;
     position: fixed;

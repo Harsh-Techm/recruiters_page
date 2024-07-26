@@ -1,0 +1,186 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e0e0e0;
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+nav{
+    background-color: rgb(49, 47, 47);
+}
+
+.container {
+    width: 100%;
+    margin: auto;
+    background: #b9b4b4;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 14px 25px;
+}
+
+.logo {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: red;
+}
+
+.login-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 34px;
+    height: 14px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 22px;
+    width: 22px;
+    left: -4px;
+    bottom: -4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: red;
+}
+
+input:checked + .slider:before {
+    transform: translateX(18px);
+}
+
+.login-toggle span {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.login-toggle span.active {
+    color: red;
+}
+
+.login-box {
+    text-align: center;
+}
+
+.login-icon {
+    width: 50px;
+    height: 50px;
+    background: red;
+    border-radius: 50%;
+    margin: 0 auto 10px auto;
+    background-image: url('user-icon.png'); /* Replace with your icon */
+    background-size: cover;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.login-btn {
+    background-color: red;
+    color: white;
+    font-weight: bold;
+}
+
+.register-btn {
+    background-color: transparent;
+    color: red;
+    font-weight: bold;
+}
+
+.forgot-password {
+    color: #000;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Styles */
+@media (max-width: 600px) {
+    .container {
+        width: 90%;
+    }
+
+    .header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .logo {
+        text-align: center;
+        width: 100%;
+    }
+
+    .login-toggle {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .login-toggle .switch {
+        margin: 0 auto;
+    }
+}
