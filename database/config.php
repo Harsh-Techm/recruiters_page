@@ -27,7 +27,7 @@ if ($conn->query($usertablecreation) === FALSE) {
 
 //                       userDetails table
 $userdetails = "CREATE TABLE if NOT EXISTS `recruitmentpage`.`userdetails` ( 
-`SlNo` INT(50) NULL , `UserId` INT(50) NOT NULL , 
+`SlNo` INT(50) NOT NULL AUTO_INCREMENT , `UserId` INT(50) NOT NULL , 
 `FirstName` VARCHAR(50) NOT NULL , 
 `LastName` VARCHAR(50) NOT NULL , `Age` INT(2) NOT NULL , `Location` INT(10) NOT NULL , `Email` VARCHAR(25) NOT NULL , `HighestQualification` VARCHAR(25) NOT NULL , `Experience` VARCHAR(25) NOT NULL , `About` VARCHAR(300) NOT NULL , 
 `Image` LONGBLOB NOT NULL , 
