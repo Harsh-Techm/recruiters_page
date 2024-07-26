@@ -27,7 +27,11 @@ if ($conn->query($usertablecreation) === FALSE) {
 
 //                       userDetails table
 $userdetails = "CREATE TABLE if NOT EXISTS `recruitmentpage`.`userdetails` ( 
+<<<<<<< HEAD
+`SlNo` INT(50) NOT NULL AUTO_INCREMENT, `UserId` INT(50) NOT NULL , 
+=======
 `SlNo` INT(50) NOT NULL AUTO_INCREMENT , `UserId` INT(50) NOT NULL , 
+>>>>>>> 6bde71e9a40762e8430a2a00e225c543e6cae7d4
 `FirstName` VARCHAR(50) NOT NULL , 
 `LastName` VARCHAR(50) NOT NULL , `Age` INT(2) NOT NULL , `Location` INT(10) NOT NULL , `Email` VARCHAR(25) NOT NULL , `HighestQualification` VARCHAR(25) NOT NULL , `Experience` VARCHAR(25) NOT NULL , `About` VARCHAR(300) NOT NULL , 
 `Image` LONGBLOB NOT NULL , 
@@ -82,3 +86,22 @@ $userskilldetails = "CREATE TABLE if NOT EXISTS `recruitmentpage`.`userskilldeta
 if ($conn->query($userskilldetails) === FALSE) {
   echo "Error creating table: " . $conn->error;
 }
+
+// Insert Dummy Data
+$sql="INSERT INTO `locationmaster` (`LocationId`, `LocationName`) VALUES (NULL, 'New York');
+      INSERT INTO `locationmaster` (`LocationId`, `LocationName`) VALUES (NULL, 'London');
+      INSERT INTO `locationmaster` (`LocationId`, `LocationName`) VALUES (NULL, 'Amsterdam');
+      INSERT INTO `locationmaster` (`LocationId`, `LocationName`) VALUES (NULL, 'Paris');
+      INSERT INTO `locationmaster` (`LocationId`, `LocationName`) VALUES (NULL, 'Madrid');
+      INSERT INTO `skillmaster` (`SkillId`, `SkillName`) VALUES (NULL, 'PHP');
+      INSERT INTO `skillmaster` (`SkillId`, `SkillName`) VALUES (NULL, 'Java');
+      INSERT INTO `skillmaster` (`SkillId`, `SkillName`) VALUES (NULL, 'Python');
+      INSERT INTO `skillmaster` (`SkillId`, `SkillName`) VALUES (NULL, 'JavaScript');
+      INSERT INTO `skillmaster` (`SkillId`, `SkillName`) VALUES (NULL, 'NodeJs');
+      INSERT INTO `customermaster` (`CustomerId`, `CustomerName`,`CustomerLocation`) VALUES (NULL, 'John Doe',1);
+      INSERT INTO `customermaster` (`CustomerId`, `CustomerName`,`CustomerLocation`) VALUES (NULL, 'Michael Paul',2);
+      INSERT INTO `customermaster` (`CustomerId`, `CustomerName`,`CustomerLocation`) VALUES (NULL, 'Jonathan Jobs',3);
+      ";
+// if ($conn->query($sql) === FALSE) {
+//   echo "Error creating table: " . $conn->error;
+// }
